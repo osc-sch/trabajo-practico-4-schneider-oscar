@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize('movies','root','',{
+export const sequelize = new Sequelize('movies','root','',{
     host:'localhost',
     dialect: 'mysql'
 })
@@ -8,6 +8,7 @@ const sequelize = new Sequelize('movies','root','',{
 export const testConnection = async () =>{
     try{
         await sequelize.authenticate();
+        await sequelize.sync({force:true})
         console.log('Se establecio correctamente la conexion a la base de datos');
     }catch(err){
         console.log('No se pudo establecer la conexion a la base de datos Error: ', err );
