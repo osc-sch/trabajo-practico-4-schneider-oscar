@@ -6,6 +6,7 @@ const PORT = 3000
 const app = express();
 
 app.use(express.json());
+//Rutas del servidor
 app.use('/api',routerMovies)
 
 app.listen(PORT, async () =>{
