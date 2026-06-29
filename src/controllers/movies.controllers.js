@@ -9,7 +9,7 @@ export const getAllMovies = (req,res) =>{
     }catch(err){
         res.status(500).json({message:'Se produjo el error' , error: err.message });
     }
-}
+};
 
 export const createMovie = (req, res) => {
     try {
@@ -32,13 +32,13 @@ export const createMovie = (req, res) => {
                         }
                     }
                     
-                    const newMovie = [
+                    const newMovie = {
                         title,
                         gender,
                         duration,
                         year,
                         synopsis
-                    ]
+                    }
 
                     res.status(201).json({message:"Se subio una pelicula" ,newMovie});
 
@@ -49,7 +49,7 @@ export const createMovie = (req, res) => {
                 }
             } else {
                 res.status(404).json({
-                    message:"La pelicula debe tener una duracion minima de un minuto"
+                    message:"Formato de duracion incorecto"
                 })
             }
             
@@ -58,3 +58,4 @@ export const createMovie = (req, res) => {
         res.status(500).json({ message: 'Se produjo el error', error: err.message });
     }
 };
+
